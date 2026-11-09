@@ -5,11 +5,13 @@ export default async function handler(req,res){
  res.setHeader('Cache-Control','no-store');
  if(!['GET','POST'].includes(req.method)){res.setHeader('Allow','GET, POST');return res.status(405).end()}
  const configured=!!(process.env.DATABASE_URL&&process.env.COOKIE_SECRET?.length>=32);
- const paymentsEnabled=configured&&process.env.PAYMENTS_ENABLED==='true'&&!!process.env.STRIPE_SECRET_KEY&&!!process.env.STRIPE_WEBHOOK_SECRET&&!!process.env.APP_ORIGIN;
+ const testMode=process.env.PAYMENT_MODE!=='live';
+ const keyMatchesMode=testMode?/^(sk|rk)_test_/.test(process.env.STRIPE_SECRET_KEY||''):/^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY||'');
+ const paymentsEnabled=keyMatchesMode&&configured&&process.env.PAYMENTS_ENABLED==='true'&&!!process.env.STRIPE_SECRET_KEY&&!!process.env.STRIPE_WEBHOOK_SECRET&&!!process.env.APP_ORIGIN;
  if(!configured)return res.status(req.method==='GET'?200:503).json({configured:false,paymentsEnabled:false,error:'The survey is being set up. Voting opens soon.'});
  try{
  const sql=db();const token=browser(req,res);
- if(req.method==='GET'){const [totals]=await sql`SELECT yes::text,no::text FROM totals WHERE id=1`;const [limit]=await sql`SELECT blocked_until FROM browser_limits WHERE token=${token} AND blocked_until>now()`;return res.json({configured:true,paymentsEnabled,yes:Number(totals.yes),no:Number(totals.no),blockedUntil:limit?.blocked_until||null})}
+ if(req.method==='GET'){const [totals]=await sql`SELECT yes::text,no::text FROM totals WHERE id=1`;const [limit]=await sql`SELECT blocked_until FROM browser_limits WHERE token=${token} AND blocked_until>now()`;return res.json({configured:true,paymentsEnabled,testMode,yes:Number(totals.yes),no:Number(totals.no),blockedUntil:limit?.blocked_until||null})}
  if(!process.env.APP_ORIGIN||req.headers.origin!==process.env.APP_ORIGIN)return res.status(403).json({error:'Please submit from the survey website.'});
  const answer=req.body?.answer;if(!['yes','no'].includes(answer))return res.status(400).json({error:'Choose Yes or No.'});
  if(answer==='yes'&&!paymentsEnabled)return res.status(503).json({error:'Payments are not connected yet.'});

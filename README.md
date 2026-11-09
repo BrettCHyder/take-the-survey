@@ -19,3 +19,6 @@ The cookie is Secure, HttpOnly, SameSite=Lax and lasts two hours. The server ato
 
 ## Checks
 `npm install`, `npm run check`, `npm test`. Payment/database integration needs actual test-service configuration; unit checks do not prove the complete payment flow.
+
+## Payment mode
+PAYMENT_MODE defaults to test. Only sk_test_ or rk_test_ credentials enable checkout in this mode, and the interface labels checkout and counts as test data. Real payments require a deliberate later PAYMENT_MODE=live configuration, a live key, a matching live webhook and clean production database.
