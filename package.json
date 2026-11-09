@@ -1,0 +1,1 @@
+{"name":"take-the-survey","private":true,"type":"module","scripts":{"test":"node --test","check":"node --check api/survey.js && node --check api/webhook.js && node --check public/app.js"},"dependencies":{"postgres":"^3.4.7","stripe":"^20.0.0"},"engines":{"node":"24.x"}}
