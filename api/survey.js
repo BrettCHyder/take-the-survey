@@ -34,7 +34,7 @@ export default async function handler(req,res){
   if(!claim){res.setHeader('Retry-After','3600');return res.status(429).json({error:'You have already submitted or started checkout. Please come back in an hour.'})}
   if(answer==='no')return res.json({submitted:true});
   try{
-   const stripe=new Stripe(config.stripeKey);
+   const stripe=new Stripe(config.stripeKey,{apiVersion:'2026-09-30.endive'});
    if(!testMode){
     const account=await stripe.accounts.retrieve();
     if(account.id!==config.expectedAccountId||!account.charges_enabled)throw Error('Live account is not ready');
@@ -43,7 +43,8 @@ export default async function handler(req,res){
    if(session.livemode===testMode)throw Error('Payment mode mismatch');
    await sql`INSERT INTO payments(session_id,browser_token) VALUES(${session.id},${token}) ON CONFLICT DO NOTHING`;
    return res.json({url:session.url});
-  }catch{
+  }catch(error){
+   console.error('Checkout creation failed',{type:error.type,code:error.code,param:error.param,requestId:error.requestId});
    return res.status(503).json({error:'Checkout could not be started. Please try again in an hour.'});
   }
  }catch{

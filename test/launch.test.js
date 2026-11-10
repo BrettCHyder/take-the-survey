@@ -24,7 +24,7 @@ test('form proof rejects other browsers, altered signatures, early and expired s
 });
 test('checkout scope remains one dollar, one time, separate session branding',()=>{
  const s=checkoutOptions('https://onedollarsurvey.com','browser-token',true);
- assert.equal(s.mode,'payment');assert.equal(s.line_items[0].price_data.unit_amount,100);assert.equal(s.line_items[0].price_data.currency,'usd');assert.equal(s.branding_settings.display_name,'One Dollar Survey');assert.equal(s.client_reference_id,'browser-token');assert.equal(s.payment_intent_data.metadata.project,'one-dollar-survey');assert.match(s.custom_text.submit.message,/Sandbox/);assert.equal(s.subscription_data,undefined);
+ assert.equal(s.mode,'payment');assert.equal(s.managed_payments.enabled,false);assert.deepEqual(s.allowed_payment_method_types,['card']);assert.equal(s.payment_method_types,undefined);assert.equal(s.line_items[0].price_data.unit_amount,100);assert.equal(s.line_items[0].price_data.currency,'usd');assert.equal(s.branding_settings.display_name,'One Dollar Survey');assert.equal(s.client_reference_id,'browser-token');assert.equal(s.payment_intent_data.metadata.project,'one-dollar-survey');assert.match(s.custom_text.submit.message,/Sandbox/);assert.equal(s.subscription_data,undefined);
 });
 
 test('live checkout uses its reusable inclusive price and Stripe Tax',()=>{const s=checkoutOptions('https://onedollarsurvey.com','browser',false,'price_live',true);assert.deepEqual(s.line_items,[{price:'price_live',quantity:1}]);assert.equal(s.automatic_tax.enabled,true);assert.equal(checkoutOptions('https://onedollarsurvey.com','browser',true).automatic_tax.enabled,false)});

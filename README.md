@@ -37,3 +37,5 @@ Live mode uses STRIPE_LIVE_SECRET_KEY, LIVE_STRIPE_WEBHOOK_SECRET, LIVE_STRIPE_P
 ## Launch tax choice and readiness
 The owner chose to track taxes independently. STRIPE_TAX_ENABLED=false disables Stripe automatic tax calculations; this does not determine or remove any tax obligations. The $1 price remains fixed. LIVE_TAX_READY records that the launch tax-handling decision is resolved, not that a tax registration was created.
 An authenticated GET /api/readiness uses SETUP_CHECK_TOKEN as a Bearer token and returns only live-account/price/webhook readiness flags. It never returns account details or credentials. It checks the key against the expected dedicated account, charges status, the $1 price and live webhook configuration. Missing authentication returns 404.
+
+Checkout explicitly disables Managed Payments per session and uses allowed_payment_method_types to filter dynamic methods to cards. This preserves the direct-payment integration and independent tax handling even when the account has Managed Payments enabled by default. Session creation is pinned to the documented 2026-09-30.endive Stripe API.
