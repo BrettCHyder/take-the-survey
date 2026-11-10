@@ -27,4 +27,6 @@ test('checkout scope remains one dollar, one time, separate session branding',()
  assert.equal(s.mode,'payment');assert.equal(s.line_items[0].price_data.unit_amount,100);assert.equal(s.line_items[0].price_data.currency,'usd');assert.equal(s.branding_settings.display_name,'One Dollar Survey');assert.equal(s.client_reference_id,'browser-token');assert.equal(s.payment_intent_data.metadata.project,'one-dollar-survey');assert.match(s.custom_text.submit.message,/Sandbox/);assert.equal(s.subscription_data,undefined);
 });
 
-test('live checkout uses its reusable inclusive price and Stripe Tax',()=>{const s=checkoutOptions('https://onedollarsurvey.com','browser',false,'price_live');assert.deepEqual(s.line_items,[{price:'price_live',quantity:1}]);assert.equal(s.automatic_tax.enabled,true);assert.equal(checkoutOptions('https://onedollarsurvey.com','browser',true).automatic_tax.enabled,false)});
+test('live checkout uses its reusable inclusive price and Stripe Tax',()=>{const s=checkoutOptions('https://onedollarsurvey.com','browser',false,'price_live',true);assert.deepEqual(s.line_items,[{price:'price_live',quantity:1}]);assert.equal(s.automatic_tax.enabled,true);assert.equal(checkoutOptions('https://onedollarsurvey.com','browser',true).automatic_tax.enabled,false)});
+
+test('manual tax handling never invokes Stripe Tax',()=>{assert.equal(checkoutOptions('https://onedollarsurvey.com','browser',false,'price_live',false).automatic_tax.enabled,false);assert.equal(runtimeConfig({...base,STRIPE_TAX_ENABLED:'false'}).taxEnabled,false)});

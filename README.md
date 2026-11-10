@@ -33,3 +33,7 @@ PAYMENT_MODE defaults to test. Only sk_test_ or rk_test_ credentials enable chec
 
 ## Separate live Stripe credentials
 Live mode uses STRIPE_LIVE_SECRET_KEY, LIVE_STRIPE_WEBHOOK_SECRET, LIVE_STRIPE_PRICE_ID and LIVE_STRIPE_ACCOUNT_ID. Test mode continues using STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET. Before live checkout is enabled, verify the dedicated live account and set LIVE_STRIPE_ACCOUNT_CONFIRMED=true; finish tax setup and verification, then set LIVE_TAX_READY=true. The live price is tax-inclusive and automatic_tax is enabled, keeping the customer total at $1 USD. Checkout retrieves the account before starting a live session and refuses a mismatched account or disabled charges. The support contact is verified working by the owner.
+
+## Launch tax choice and readiness
+The owner chose to track taxes independently. STRIPE_TAX_ENABLED=false disables Stripe automatic tax calculations; this does not determine or remove any tax obligations. The $1 price remains fixed. LIVE_TAX_READY records that the launch tax-handling decision is resolved, not that a tax registration was created.
+An authenticated GET /api/readiness uses SETUP_CHECK_TOKEN as a Bearer token and returns only live-account/price/webhook readiness flags. It never returns account details or credentials. It checks the key against the expected dedicated account, charges status, the $1 price and live webhook configuration. Missing authentication returns 404.

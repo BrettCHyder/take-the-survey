@@ -39,7 +39,7 @@ export default async function handler(req,res){
     const account=await stripe.accounts.retrieve();
     if(account.id!==config.expectedAccountId||!account.charges_enabled)throw Error('Live account is not ready');
    }
-   const session=await stripe.checkout.sessions.create(checkoutOptions(process.env.APP_ORIGIN,token,testMode,config.priceId),{idempotencyKey:randomUUID()});
+   const session=await stripe.checkout.sessions.create(checkoutOptions(process.env.APP_ORIGIN,token,testMode,config.priceId,config.taxEnabled),{idempotencyKey:randomUUID()});
    if(session.livemode===testMode)throw Error('Payment mode mismatch');
    await sql`INSERT INTO payments(session_id,browser_token) VALUES(${session.id},${token}) ON CONFLICT DO NOTHING`;
    return res.json({url:session.url});
