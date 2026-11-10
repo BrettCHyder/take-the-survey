@@ -50,3 +50,6 @@ Checkout explicitly disables Managed Payments per session and uses allowed_payme
 The static homepage includes canonical, Open Graph and Twitter card metadata. `/robots.txt` advertises `/sitemap.xml`; API routes are excluded from crawling. `/about.html` provides the project story, honest limitations and reusable wide, square and story artwork. The share controls use native sharing when available and provide a clipboard link with a manual fallback. No analytics identifiers or visitor profiles were added.
 
 Search-engine notification: the IndexNow verification file is intentionally public as required by the protocol. Re-submit only when public pages change, not for each vote. Google Search Console submission requires an authenticated owner session and is separate from IndexNow.
+
+## Sharing kit generator
+`public/sharing-kit.html` hosts a reusable twelve-second vertical video, direct-link QR assets, printable cards, and a script-free SVG badge. `scripts/generate-sharing-kit.py` reproduces the QR/card/video assets using development-only Pillow, qrcode, zxing-cpp and ffmpeg. None are application runtime dependencies. QR outputs are independently decoded during generation. The badge and print pages do not submit votes or expose payment details.

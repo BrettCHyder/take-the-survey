@@ -11,6 +11,8 @@ Status recorded November 10, 2026. These are submission receipts, not editorial 
 | The Useless Web Index | https://www.theuselesswebindex.com/get-involved/ | “Thank you for supporting our index.” | Received; editorial decision pending |
 | BoredomBash | https://boredombash.com/submit/ | “Got it — thanks. Every submission gets looked at by a human.” | Received; editorial decision pending |
 | Bored Button | https://www.boredbutton.com/add | “Thank you! We’ll review your suggestion right away.” | Received; editorial decision pending |
+| OpenWeird | https://openweird.com/about/ → review | “Your response has been recorded” | Received; editorial decision pending |
+| Another Useless Website | https://anotheruseless.website/submit-website/ | “Website URL submitted, Thank you!” | Received; editorial decision pending |
 
 Submissions identify the actual project, disclose that Yes costs $1, and do not claim scientific validity, a subscription, a prize, or a donation. Creator/affiliation fields were answered honestly. Only the public support email was supplied where contact information was needed. No newsletter subscriptions, purchases, vote requests, paid placements or fake endorsements were made.
 
@@ -53,3 +55,39 @@ Eight existing payment/security tests passed. JS syntax, sitemap XML and local a
 2. Use an authenticated personal social account for one transparent creator post, checking the destination’s current promotion and AI-content rules first. Do not request upvotes or coordinate engagement.
 3. Use https://onedollarsurvey.com/about.html as a single factual media-kit link for targeted creator outreach. A good initial target is someone already covering single-purpose or absurd websites, rather than a generic large influencer.
 4. Wait for editorial decisions rather than resubmitting to the same curators. Check the support mailbox for replies.
+
+## Second outreach pass
+
+Seven editorial submissions have confirmed receipts in total. The two new submissions were OpenWeird and Another Useless Website. Both disclosed the paid Yes branch; OpenWeird’s backlink question was answered “Sorry, no.” No reciprocal-link commitment was made.
+
+A base31 discovery submission was attempted. The form did not show a clear receipt, so it is not included in the confirmed total and was not resubmitted.
+
+Additional destinations investigated:
+
+| Destination | Actual blocker / next action |
+| --- | --- |
+| Pointless Sites | Live submit form requires a CAPTCHA. No attempt to solve it was made; the owner can submit at https://www.pointlesssites.com/feedback.asp?f=1. |
+| WeirdWebsites.net | Registration/login required. No account was created. |
+| Bored Hoard | Current /submit redirects to sign-in, despite public search text showing the form. No account was created. |
+| Neatorama | Its /suggest page explicitly welcomes self-nominations, but the current browser page did not expose the described form. No suggestion was sent. |
+| Jason Kottke / kottke.org | His official About page explicitly welcomes links from creators: https://also.kottke.org/about/index.html. Appropriate for one short personal email once the owner connects a sending account. No email sent. |
+
+### Published creative distribution kit
+
+https://onedollarsurvey.com/sharing-kit.html now includes:
+
+- A silent, twelve-second, 1080×1920 H.264 MP4 introduction with the actual question, honest payment terms, URL and QR code.
+- A square QR card and standalone QR code, opening the survey directly without a third-party tracking redirect.
+- Four printable US Letter cards at /print-cards.html.
+- A linked SVG badge, plus copyable HTML and Markdown embed snippets for bloggers and developers. The badge uses no scripts or embedded voting.
+- Existing wide/square/story artwork and the About & Media link.
+
+The homepage links directly to the kit. It has a canonical URL and sitemap entry; the print-only helper is noindex,follow. The kit contains real reusable material, not duplicate keyword landing pages.
+
+### Verification of the second release
+
+Source commit: 2f74420e36016571509aed65a4c4c428451c1eef. Production deployment dpl_46t4jhQcMabzGed3pDdwzDzVjeHn reached READY. Kit, video, badge, print page and live survey API returned HTTP 200. Live payments remained enabled.
+
+The video played to currentTime=12, duration=12, readyState=4, with no media error. Copy HTML displayed its success feedback. All four printable cards were present and rendered within the page width. QR, square card and video end-card QR were independently decoded with zxing-cpp to exactly https://onedollarsurvey.com/. The generator is retained in scripts/generate-sharing-kit.py and adds no application runtime dependencies. Eight existing tests and JS/static asset checks passed.
+
+The updated homepage, About and new sharing-kit URLs were sent through IndexNow following the content change. No indexing, traffic or editorial acceptance is implied by notification.
