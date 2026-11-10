@@ -91,3 +91,23 @@ Source commit: 2f74420e36016571509aed65a4c4c428451c1eef. Production deployment d
 The video played to currentTime=12, duration=12, readyState=4, with no media error. Copy HTML displayed its success feedback. All four printable cards were present and rendered within the page width. QR, square card and video end-card QR were independently decoded with zxing-cpp to exactly https://onedollarsurvey.com/. The generator is retained in scripts/generate-sharing-kit.py and adds no application runtime dependencies. Eight existing tests and JS/static asset checks passed.
 
 The updated homepage, About and new sharing-kit URLs were sent through IndexNow following the content change. No indexing, traffic or editorial acceptance is implied by notification.
+
+## Editorial outreach preparation — November 10 morning
+
+The owner’s public identity preference is now first name only: Brett. The About & Media introduction was updated accordingly. Do not use the surname in promotional copy or new submissions.
+
+No new submission or email was sent during this research pass; the confirmed curator count remains seven.
+
+Verified next targets:
+
+- **Jason Kottke**: https://also.kottke.org/about/index.html explicitly welcomes links from creators. Its visible mailto link verifies jason@kottke.org. A short pitch about the literal one-dollar Yes is prepared; not sent.
+- **The Awesomer**: https://theawesomer.com/writethemothership/ publicly lists contact@theawesomer.com. Its current /tellmesomethinggood form welcomes website suggestions, requires image/video links, requires both first and last names, and has a CAPTCHA. No surname was entered and no form was submitted. A concise email pitch with the wide image and vertical video links is prepared; not sent. Do not submit through both routes.
+- **Web Curios**: https://webcurios.co.uk/contact/ welcomes creator projects but explicitly requests an actual human-written email, not an AI-generated pitch. Leave this email to Brett to write personally; do not send an agent-written pitch.
+
+Additional community checks:
+
+- r/WeirdWebsites moderators announced a no-self-promotion rule on November 7, 2026: https://www.reddit.com/r/WeirdWebsites/comments/1xpzdom/new_rule_no_promoting_your_own_websites/. Do not submit as the creator or pretend to be an unaffiliated visitor.
+- This browser’s attempt to inspect r/SideProject rules was explicitly blocked by Reddit’s network security/unauthorized-agent message. No Reddit post was made and no access-control workaround was attempted. Community rules must be checked through an allowed user session before posting.
+- Sidebar accepts creator links but /submit requires login, with an emphasis on substantive design content. No account created or submission made.
+
+Gmail was successfully connected by the owner. Its installation was independently confirmed as installed=true, but mail tools were not exposed in this execution session. This is not a request to reconnect or broaden permissions. No mailbox was read, no sender identity verified, no sent-mail duplicate check completed, and no email sent. Before sending prepared pitches, verify the actual sender account and check for prior correspondence.
