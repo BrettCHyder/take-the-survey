@@ -111,3 +111,16 @@ Additional community checks:
 - Sidebar accepts creator links but /submit requires login, with an emphasis on substantive design content. No account created or submission made.
 
 Gmail was successfully connected by the owner. Its installation was independently confirmed as installed=true, but mail tools were not exposed in this execution session. This is not a request to reconnect or broaden permissions. No mailbox was read, no sender identity verified, no sent-mail duplicate check completed, and no email sent. Before sending prepared pitches, verify the actual sender account and check for prior correspondence.
+
+## Editorial pitches sent — November 10, 2026, 8:54 AM Eastern
+
+The Gmail actions became available. The authenticated mailbox was verified as help@onedollarsurvey.com. A search across the mailbox found no prior messages to or from either recipient. The owner approved the two displayed pitches before sending.
+
+| Recipient | Subject | Verified status |
+| --- | --- | --- |
+| Jason Kottke, jason@kottke.org | A survey whose “Yes” costs an actual dollar | Sent; awaiting response |
+| The Awesomer, contact@theawesomer.com | Story suggestion: the most literal $1 survey | Sent; awaiting response |
+
+Both messages were read back from Sent. Their From header is exactly `Brett <help@onedollarsurvey.com>`; the surname is absent from the outgoing display name and message bodies. The Kottke pitch discloses ChatGPT assistance, and The Awesomer pitch includes links to the public image and twelve-second video. No attachments, tracking pixels, CC/BCC recipients, paid placement offers, or additional pitches were added. Do not submit The Awesomer form as well or resend these pitches without checking the existing conversations.
+
+Sent status confirms Gmail accepted the messages for sending; it does not confirm recipient delivery, reading, editorial acceptance or resulting traffic. The seven earlier curator submissions remain separate from these two email pitches.
