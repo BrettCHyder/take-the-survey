@@ -30,3 +30,6 @@ PAYMENT_MODE defaults to test. Only sk_test_ or rk_test_ credentials enable chec
 - Never set PAYMENT_MODE=live during sandbox testing. Set PAYMENTS_ENABLED=false during any live credential/database transition. Verify the exact account, webhook, contact route, zero totals, then enable.
 - App anti-spam: signed browser cookie, 15-minute browser-bound form proof with 750ms minimum age, hidden honeypot, origin/content-type checks and atomic one-hour cooldown. Vercel WAF additionally limits POST /api/survey to ten requests per minute per IP; the webhook endpoint is excluded.
 - Branding is scoped to survey Checkout Sessions. No Sunday Serve account-wide branding settings are changed.
+
+## Separate live Stripe credentials
+Live mode uses STRIPE_LIVE_SECRET_KEY, LIVE_STRIPE_WEBHOOK_SECRET, LIVE_STRIPE_PRICE_ID and LIVE_STRIPE_ACCOUNT_ID. Test mode continues using STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET. Before live checkout is enabled, verify the dedicated live account and set LIVE_STRIPE_ACCOUNT_CONFIRMED=true; finish tax setup and verification, then set LIVE_TAX_READY=true. The live price is tax-inclusive and automatic_tax is enabled, keeping the customer total at $1 USD. Checkout retrieves the account before starting a live session and refuses a mismatched account or disabled charges. The support contact is verified working by the owner.

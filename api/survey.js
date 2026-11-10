@@ -34,8 +34,12 @@ export default async function handler(req,res){
   if(!claim){res.setHeader('Retry-After','3600');return res.status(429).json({error:'You have already submitted or started checkout. Please come back in an hour.'})}
   if(answer==='no')return res.json({submitted:true});
   try{
-   const stripe=new Stripe(process.env.STRIPE_SECRET_KEY);
-   const session=await stripe.checkout.sessions.create(checkoutOptions(process.env.APP_ORIGIN,token,testMode),{idempotencyKey:randomUUID()});
+   const stripe=new Stripe(config.stripeKey);
+   if(!testMode){
+    const account=await stripe.accounts.retrieve();
+    if(account.id!==config.expectedAccountId||!account.charges_enabled)throw Error('Live account is not ready');
+   }
+   const session=await stripe.checkout.sessions.create(checkoutOptions(process.env.APP_ORIGIN,token,testMode,config.priceId),{idempotencyKey:randomUUID()});
    if(session.livemode===testMode)throw Error('Payment mode mismatch');
    await sql`INSERT INTO payments(session_id,browser_token) VALUES(${session.id},${token}) ON CONFLICT DO NOTHING`;
    return res.json({url:session.url});
