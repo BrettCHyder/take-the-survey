@@ -124,3 +124,19 @@ The Gmail actions became available. The authenticated mailbox was verified as he
 Both messages were read back from Sent. Their From header is exactly `Brett <help@onedollarsurvey.com>`; the surname is absent from the outgoing display name and message bodies. The Kottke pitch discloses ChatGPT assistance, and The Awesomer pitch includes links to the public image and twelve-second video. No attachments, tracking pixels, CC/BCC recipients, paid placement offers, or additional pitches were added. Do not submit The Awesomer form as well or resend these pitches without checking the existing conversations.
 
 Sent status confirms Gmail accepted the messages for sending; it does not confirm recipient delivery, reading, editorial acceptance or resulting traffic. The seven earlier curator submissions remain separate from these two email pitches.
+
+## Additional editorial pitches — November 10, 2026, 9:15–9:19 AM Eastern
+
+The owner authorized friendly outreach from the support mailbox. Each recipient was verified through its official public submission/contact page, and Gmail was checked for prior correspondence before sending.
+
+| Recipient | Official route | Pitch angle | Status |
+| --- | --- | --- | --- |
+| It’s Nice That, submit@itsnicethat.com | https://www.itsnicethat.com/submissions | Tiny digital interaction: the wording becomes the interface; bio, project and public artwork/video links | Sent; awaiting response |
+| Greg Ross / Futility Closet, greg@futilitycloset.com | https://www.futilitycloset.com/about/ | Self-referential curiosity and taking a question literally | Sent; awaiting response |
+| Andy Baio / Waxy, log@waxy.org | https://waxy.org/about/ | Playful independent internet experiment | Sent; awaiting response |
+
+All three were read back from Sent with From exactly `Brett <help@onedollarsurvey.com>`. The surname is absent from the copy. Each identifies the creator, discloses ChatGPT assistance, and makes free No / real one-time $1 Yes clear. No subscriptions, prizes or scientific validity are claimed. No attachments, tracking pixels, bulk recipients, or paid-placement commitments were used. Sent status does not establish delivery, publication or visitors.
+
+Dense Discovery’s current policy (https://www.densediscovery.com/read.php?show=ai) asks for a personal pitch in the creator’s own voice and rejects fully automated AI emails. Leave that to Brett personally, alongside Web Curios; do not send an agent-written pitch.
+
+Cumulative confirmed outreach: seven directory/form submissions and five individual editorial emails. These are submissions, not accepted listings or coverage. Check existing conversations before any follow-up.
